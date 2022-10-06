@@ -1,25 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
+
+
+
+
+const states =
+    {color: 'black'}
+
 
 function App() {
+
+  const [state, setState] = useState(states)
+
+
+    setInterval ( () => {
+        setState({color: 'pink'})
+    },1000)
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+          <div
+              style={{
+                  backgroundColor: state.color,
+                  paddingTop: 20,
+                  width: 400,
+                  height: 80,
+                  margin: 'auto'
+              }}
+          />
+      </div>
   );
 }
+
 
 export default App;
