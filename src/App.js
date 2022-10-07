@@ -2,35 +2,49 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from "react";
 
+function Login({props,onClick}) {
+    return (
+        <>
+            <h2>{props}</h2>
+            <button onClick={onClick}>Login</button>
+        </>
+    )
+}
+function Logout({props,onClick}) {
+    return (
+        <>
+            <h2>{props}</h2>
+            <button onClick={onClick}>Login</button>
+        </>
+    )
 
+}
 
-
-const states =
-    {color: 'black'}
 
 
 function App() {
 
-  const [state, setState] = useState(states)
+    const [isLogin, setIsLogin] = useState(false);
 
-
-    setInterval ( () => {
-        setState({color: 'pink'})
-    },1000)
-
-
+    const handleLogin = () => {
+        setIsLogin(true);
+    }
+    const handleLogout = () => {
+        setIsLogin(false);
+    }
 
   return (
       <div>
-          <div
-              style={{
-                  backgroundColor: state.color,
-                  paddingTop: 20,
-                  width: 400,
-                  height: 80,
-                  margin: 'auto'
-              }}
-          />
+          { (!isLogin) ?
+              <Login
+                  props= 'Please Login'
+              onClick={handleLogin}
+              />
+              :
+              <Logout
+                  props= 'Welcome'
+              onClick={handleLogout}/>
+          }
       </div>
   );
 }
